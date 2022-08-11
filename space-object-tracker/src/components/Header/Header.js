@@ -43,7 +43,7 @@ export const Header = () => {
             </div>
             <nav className="nav">
                 <ul>
-                    <li><Link to="/home">Home</Link></li>
+                    <li><Link to="/">Home</Link></li>
                     <li><Link to="/about">About</Link> </li>
                     <li><Link to="/objects">Search for an Object</Link></li>
                     <li><Link to="/objects/pagination">Objects</Link></li>
