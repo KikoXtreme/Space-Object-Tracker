@@ -1,0 +1,90 @@
+header {
+    background: rgb(0, 128, 182);
+    background: linear-gradient(0deg, rgb(12, 0, 182) 0%, rgb(99, 169, 200) 35%, rgb(1, 17, 20) 100%);
+}
+
+header ul {
+    padding: 3px;
+    ;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+header ul span {
+    color: white;
+    padding: 0.5em;
+}
+
+.mini-navbar ul {
+    border: 1px solid white;
+    border-radius: 1.5em;
+    width: 100%;
+}
+
+header li {
+    list-style: none;
+    margin: .45em;
+    padding: 0 .95em;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+nav {
+    border-top: 3px solid white;
+}
+
+.logo-wrap {
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: .8em;
+    margin: .6em 0;
+    font-size: 2em;
+    color: white;
+    padding-bottom: 0;
+    font-style: normal;
+}
+
+.mini-navbar-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+}
+
+/* mini-navbar */
+
+.mini-navbar ul {
+    background: linear-gradient(0deg, rgb(233, 239, 234) 0%, rgb(99, 169, 200) 35%, rgb(165, 165, 10) 100%);
+    border-radius: 1.5em;
+}
+
+.mini-navbar ul li+li {
+    border-left: 2px solid lightgrey;
+    padding-left: .5em;
+}
+
+.notification {
+    position: fixed;
+    z-index: 10;
+    top: 12%;
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+    color: white;
+    box-shadow: 0 5px 10px rgb(204, 204, 204);
+    background-color: rgba(238, 74, 74, 0.8);
+}
+
+.error-message {
+    background-color: rgba(238, 74, 74, 0.8);
+}
+
+.success-message {
+    background-color: rgba(99, 230, 81, 0.8);
+}
