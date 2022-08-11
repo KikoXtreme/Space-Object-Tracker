@@ -1,8 +1,18 @@
+import styles from './Footer.module.css'
+
 export const Footer = () => {
     return (
-        <div>
-            <h2>Footer</h2>
-            <h3>All rights reserved</h3>
-        </div>
+        <footer>
+            <p>
+            More than 27,000 objects and pieces of orbital debris are tracked by the DoD's global Space Surveillance Network (SSN) sensors.
+            </p>
+            <p>
+                Helping NASA and DoD discover new objects is essential for protecting humans on Earth. It will ensure much better and safer space exploration.
+            </p>
+            <p>More real-time data:
+                <span> <a href="https://www.nasa.gov/mission_pages/station/news/orbital_debris.html">NASA Watch</a> </span>
+                &copy; 2022
+            </p>
+        </footer>
     );
 }
