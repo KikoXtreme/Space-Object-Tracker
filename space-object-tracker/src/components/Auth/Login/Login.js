@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../../context/UserContext";
 import { login } from "../../../services/authService";
-import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
+    const { userLogin } = useContext(UserContext)
     const navigate = useNavigate();
 
     const onSubmit = (e) => {
@@ -14,9 +16,15 @@ export const Login = () => {
         } = Object.fromEntries(new FormData(e.target));
         console.log(email, password)
 
-        login(email, password);
-        navigate('/');
-        // .then(userData)
+        login(email, password)
+            .then(userData => {
+                userLogin(userData);
+                navigate('/');
+                console.log(userData);
+            })
+            .catch(() => {
+                navigate('/NotFound');
+            })
     }
 
     return (
