@@ -1,7 +1,11 @@
-import { get } from "./util/request"
+import { post } from "./util/request"
 
 const url = 'http://localhost:3030/users';
 
 export const login = (email, password) => {
-    get(url);
+    post(`${url}/login`, { email, password });
+}
+
+export const register = (email, password) => {
+    post(`${url}/register`, {email, password});
 }

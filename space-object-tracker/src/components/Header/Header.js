@@ -30,14 +30,14 @@ export const Header = () => {
                 </div>
                 <div className="mini-navbar">
                     <ul>
-                        <li> <Link to="/user/login">Login</Link></li>
-                        <li> <Link to="/user/register">Register</Link></li>
+                        <li> <Link to="/users/login">Login</Link></li>
+                        <li> <Link to="/users/register">Register</Link></li>
                     </ul>
                 </div>
                 <div className="mini-navbar">
                     <ul>
-                        <li> <Link to="/user/profile">KIKO's Profile</Link></li>
-                        <li> <Link to="/user/logout">Logout</Link></li>
+                        <li> <Link to="/users/profile">KIKO's Profile</Link></li>
+                        <li> <Link to="/users/logout">Logout</Link></li>
                     </ul>
                 </div>
             </div>
