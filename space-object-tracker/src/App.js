@@ -15,6 +15,7 @@ import { Logout } from './components/Auth/Logout/Logout';
 import { NotFound } from './components/Main/NotFound/NotFound';
 import { Objects } from './components/Main/Objects/Objects';
 import { Create } from './components/Main/Create/Create';
+import { About } from './components/Main/About/About';
 
 function App() {
     const [objects, setObjects] = useState([]);
@@ -52,6 +53,7 @@ function App() {
                     <main id="main">
                         <Routes>
                             <Route path='/' element={<Home />}></Route>
+                            <Route path='/about' element={<About />}></Route>
                             <Route path='/users/login' element={<Login />}></Route>
                             <Route path='/users/register' element={<Register />}></Route>
                             <Route path='/users/logout' element={<Logout />}></Route>

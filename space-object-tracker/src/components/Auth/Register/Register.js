@@ -1,13 +1,17 @@
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { UserContext } from '../../../context/UserContext';
 import { register } from '../../../services/authService';
 
 export const Register = () => {
+    const { userLogin } = useContext(UserContext);
+    const navigate = useNavigate();
 
     const onSubmit = (e) => {
         e.preventDefault();
 
-        const formData = new FormData(e.targer);
-
+        const formData = new FormData(e.target);
+        
         const email = formData.get('email');
         const password = formData.get('password');
         const repass = formData.get('confirm-password');
@@ -16,7 +20,11 @@ export const Register = () => {
             return;
         }
 
-        register(email, password);
+        register(email, password)
+            .then(userData => {
+                userLogin(userData);
+                navigate('/');
+            })
     }
 
     return (
