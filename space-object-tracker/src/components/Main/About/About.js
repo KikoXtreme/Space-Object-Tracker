@@ -5,7 +5,7 @@ export const About = () => {
     return (
         <div>
             <div className={styles.imgContainer}>
-                <img src="/assets/NASA-Planets.jpg" alt="Exo Planets Logo" />
+                <img src="/assets/space-junk.jpg" alt="Exo Planets Logo" />
             </div>
 
             <section className={styles["about-content"]}>

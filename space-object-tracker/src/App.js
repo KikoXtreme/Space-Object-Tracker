@@ -17,6 +17,7 @@ import { Objects } from './components/Main/Objects/Objects';
 import { About } from './components/Main/About/About';
 import { Create } from './components/Main/Create/Create';
 import { Edit } from './components/Main/Edit/Edit';
+import { Details } from './components/Main/Details/Details';
 
 function App() {
     const [objects, setObjects] = useState([]);
@@ -43,10 +44,7 @@ function App() {
     }
 
     const editObject = (objectId, objectData) => {
-        setObjects(state => [
-            ...state,
-            objectData
-        ]);
+        setObjects(state => state.map(x => x._id === objectId ? objectData : x));
     }
 
     useEffect(() => {
@@ -71,6 +69,7 @@ function App() {
                             <Route path='/objects' element={<Objects />}></Route>
                             <Route path='/objects/create' element={<Create />}></Route>
                             <Route path='/objects/:objectId/edit' element={<Edit />}></Route>
+                            <Route path='/objects/:objectId' element={<Details />}></Route>
                             <Route path='/*' element={<NotFound />}></Route>
                         </Routes>
                     </main>
