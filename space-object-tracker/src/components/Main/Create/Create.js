@@ -9,8 +9,7 @@ export const Create = () => {
         e.preventDefault();
 
         const objectData = Object.fromEntries(new FormData(e.target));
-        console.log(objectData)
-
+        // console.log(objectData)
         create(objectData)
             .then(result => {
                 addObject(result)

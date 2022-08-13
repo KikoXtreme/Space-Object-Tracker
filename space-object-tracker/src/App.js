@@ -14,8 +14,9 @@ import { Register } from './components/Auth/Register/Register';
 import { Logout } from './components/Auth/Logout/Logout';
 import { NotFound } from './components/Main/NotFound/NotFound';
 import { Objects } from './components/Main/Objects/Objects';
-import { Create } from './components/Main/Create/Create';
 import { About } from './components/Main/About/About';
+import { Create } from './components/Main/Create/Create';
+import { Edit } from './components/Main/Edit/Edit';
 
 function App() {
     const [objects, setObjects] = useState([]);
@@ -32,10 +33,20 @@ function App() {
 
     const addObject = (objectData) => {
         setObjects(state => [
+            //Error if empty array
             ...state,
             objectData
         ]);
+        console.log(objects + ' 1')
+        console.log(objectData + ' 2')
         navigate('/objects');
+    }
+
+    const editObject = (objectId, objectData) => {
+        setObjects(state => [
+            ...state,
+            objectData
+        ]);
     }
 
     useEffect(() => {
@@ -49,7 +60,7 @@ function App() {
         <UserContext.Provider value={{ user, userLogin, userLogout }}>
             <div className="App">
                 <Header />
-                <ObjectContext.Provider value={{ objects, addObject }}>
+                <ObjectContext.Provider value={{ objects, addObject, editObject }}>
                     <main id="main">
                         <Routes>
                             <Route path='/' element={<Home />}></Route>
@@ -59,6 +70,7 @@ function App() {
                             <Route path='/users/logout' element={<Logout />}></Route>
                             <Route path='/objects' element={<Objects />}></Route>
                             <Route path='/objects/create' element={<Create />}></Route>
+                            <Route path='/objects/:objectId/edit' element={<Edit />}></Route>
                             <Route path='/*' element={<NotFound />}></Route>
                         </Routes>
                     </main>
