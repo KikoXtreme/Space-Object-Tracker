@@ -47,6 +47,19 @@ function App() {
         setObjects(state => state.map(x => x._id === objectId ? objectData : x));
     }
 
+    const addComment = (objectId, comment) => {
+        setObjects(state => {
+            const object = state.find(x => x._id === objectId);
+            const comments = object.comments || [];
+            comments.push(comment);
+
+            return [
+                ...state.filter(x => x._id !== objectId),
+                { ...object, comments }
+            ]
+        })
+    }
+
     useEffect(() => {
         getAll()
             .then(result => {
@@ -58,7 +71,7 @@ function App() {
         <UserContext.Provider value={{ user, userLogin, userLogout }}>
             <div className="App">
                 <Header />
-                <ObjectContext.Provider value={{ objects, addObject, editObject }}>
+                <ObjectContext.Provider value={{ objects, addObject, editObject, addComment }}>
                     <main id="main">
                         <Routes>
                             <Route path='/' element={<Home />}></Route>

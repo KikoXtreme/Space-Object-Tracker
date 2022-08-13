@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
-import styles from './Header.module.css';
+import './Header.css';
 
 export const Header = () => {
     const { user } = useContext(UserContext);
@@ -9,7 +9,7 @@ export const Header = () => {
     return (
         <header>
             <div className="mini-navbar-wrap">
-                <div className={styles['logo-wrap']}>
+                <div className="logo-wrap">
                     <Link to="/">Space Object Tracker</Link>
                 </div>
                 {user.email && <span>{user.email}</span>}
