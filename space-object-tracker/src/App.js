@@ -6,6 +6,7 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 import { getAll } from './services/objectService';
 import './App.css';
 
+import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { Home } from './components/Main/Home/Home';
@@ -80,7 +81,11 @@ function App() {
                             <Route path='/users/register' element={<Register />}></Route>
                             <Route path='/users/logout' element={<Logout />}></Route>
                             <Route path='/objects' element={<Objects />}></Route>
-                            <Route path='/objects/create' element={<Create />}></Route>
+
+                            <Route element={<PrivateRoute />}>
+                                <Route path='/objects/create' element={<Create />}></Route>
+                            </Route>
+                            
                             <Route path='/objects/:objectId/edit' element={<Edit />}></Route>
                             <Route path='/objects/:objectId' element={<Details />}></Route>
                             <Route path='/*' element={<NotFound />}></Route>
