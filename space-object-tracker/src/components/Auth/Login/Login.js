@@ -29,7 +29,7 @@ export const Login = () => {
 
     return (
         <section id="login-page" className="auth">
-            <form id="login" onSubmit={onSubmit}>
+            <form className="login" onSubmit={onSubmit}>
                 <div className="container">
                     <div className="brand-logo" />
                     <h1>Login</h1>
@@ -38,7 +38,7 @@ export const Login = () => {
                         type="email"
                         id="email"
                         name="email"
-                        placeholder="kiko@gmail.com"
+                        placeholder="kiril.valkov@yahoo.com"
                     />
                     <label htmlFor="login-pass">Password:</label>
                     <input
