@@ -1,9 +1,6 @@
-import { useEffect, useState } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import { UserContext } from './context/UserContext';
-import { ObjectContext } from './context/ObjectContext';
-import { useLocalStorage } from './hooks/useLocalStorage';
-import { getAll } from './services/objectService';
+import { Routes, Route } from 'react-router-dom';
+import { UserProvider } from './context/UserContext';
+import { ObjectProvider } from './context/ObjectContext';
 import './App.css';
 
 import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
@@ -21,58 +18,11 @@ import { Edit } from './components/Main/Edit/Edit';
 import { Details } from './components/Main/Details/Details';
 
 function App() {
-    const [objects, setObjects] = useState([]);
-    const [user, setUser] = useLocalStorage('user', {});
-    const navigate = useNavigate();
-
-    const userLogin = (userData) => {
-        setUser(userData);
-    }
-
-    const userLogout = () => {
-        setUser({});
-    }
-
-    const addObject = (objectData) => {
-        setObjects(state => [
-            //Error if empty array
-            ...state,
-            objectData
-        ]);
-        console.log(objects + ' 1')
-        console.log(objectData + ' 2')
-        navigate('/objects');
-    }
-
-    const editObject = (objectId, objectData) => {
-        setObjects(state => state.map(x => x._id === objectId ? objectData : x));
-    }
-
-    const addComment = (objectId, comment) => {
-        setObjects(state => {
-            const object = state.find(x => x._id === objectId);
-            const comments = object.comments || [];
-            comments.push(comment);
-
-            return [
-                ...state.filter(x => x._id !== objectId),
-                { ...object, comments }
-            ]
-        })
-    }
-
-    useEffect(() => {
-        getAll()
-            .then(result => {
-                setObjects(result);
-            })
-    }, []);
-
     return (
-        <UserContext.Provider value={{ user, userLogin, userLogout }}>
+        <UserProvider>
             <div className="App">
                 <Header />
-                <ObjectContext.Provider value={{ objects, addObject, editObject, addComment }}>
+                <ObjectProvider>
                     <main id="main">
                         <Routes>
                             <Route path='/' element={<Home />}></Route>
@@ -84,17 +34,17 @@ function App() {
 
                             <Route element={<PrivateRoute />}>
                                 <Route path='/objects/create' element={<Create />}></Route>
+                                <Route path='/objects/:objectId/edit' element={<Edit />}></Route>
+                                <Route path='/objects/:objectId' element={<Details />}></Route>
                             </Route>
-                            
-                            <Route path='/objects/:objectId/edit' element={<Edit />}></Route>
-                            <Route path='/objects/:objectId' element={<Details />}></Route>
+
                             <Route path='/*' element={<NotFound />}></Route>
                         </Routes>
                     </main>
-                </ObjectContext.Provider>
+                </ObjectProvider>
                 <Footer />
             </div>
-        </UserContext.Provider>
+        </UserProvider>
     );
 }
 
