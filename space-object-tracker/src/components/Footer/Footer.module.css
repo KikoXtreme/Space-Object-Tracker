@@ -1,12 +1,12 @@
-footer {
+/* footer {
     background: rgb(0, 212, 255);
     background: linear-gradient(0deg, rgb(12, 0, 182) 0%, rgb(99, 169, 200) 35%, rgb(1, 17, 20) 100%);
     margin-top: 1em;
-    position: fixed; /*absolute*/
+    position: fixed; //absolute
     bottom: 0;
     width: 100%;
     max-width: 1920px;
-}
+} */
 
 footer p {
     margin: 0;

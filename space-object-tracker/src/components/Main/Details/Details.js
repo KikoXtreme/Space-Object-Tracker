@@ -1,24 +1,68 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { ObjectContext } from "../../../context/ObjectContext";
 import { getOne } from "../../../services/objectService";
 
 export const Details = () => {
     const [currentObject, setCurrentObject] = useState({});
+    const { addComment } = useContext(ObjectContext);
     const { objectId } = useParams();
+
+    const [comment, setComment] = useState({
+        username: '',
+        comment: '',
+    });
+
+    const [error, setError] = useState({
+        username: '',
+        comment: '',
+    });
 
     useEffect(() => {
         getOne(objectId)
             .then(objectData => {
                 setCurrentObject(objectData);
             })
-    }, [objectId]);
+    }, [objectId]); //???
+
+    const addCommentHandler = (e) => {
+        e.preventDefault();
+
+        const result = `${comment.username} : ${comment.comment}`;
+
+        addComment(objectId, result);
+    }
+
+    const onChange = (e) => {
+        setComment(state => ({
+            ...state,
+            [e.target.name]: e.target.value
+        }));
+    }
+
+    const validateUsername = (e) => {
+        const username = e.target.value;
+        let errorMsg = '';
+        console.log(username)
+
+        if (username.length < 3) {
+            errorMsg = 'Username must be at least 3 characters long';
+        } else if (username.length > 10) {
+            errorMsg = 'Username must be at max 10 characters long';
+        }
+
+        setError(state => ({
+            ...state,
+            username: errorMsg
+        }))
+    }
 
     return (
         <section id="game-details">
             <h1>Game Details</h1>
             <div className="info-section">
                 <div className="game-header">
-                    <img className="game-img" src={currentObject.imageUrl} alt="Space Object"/>
+                    <img className="game-img" src={currentObject.imageUrl} alt="Space Object" />
                     <h1>{currentObject.title}</h1>
                     <span className="levels">MaxLevel: {currentObject.maxLevel}</span>
                     <p className="type">{currentObject.category}</p>
@@ -39,7 +83,7 @@ export const Details = () => {
 
                     {/* {!game.comments &&
                     <p className="no-comment">No comments.</p>
-                } */}
+                    } */}
                 </div>
 
                 <div className="buttons">
@@ -54,25 +98,25 @@ export const Details = () => {
 
             <article className="create-comment">
                 <label>Add new comment:</label>
-                <form className="form" /*onSubmit={addCommentHandler}*/>
+                <form className="form" onSubmit={addCommentHandler}>
                     <input
                         type="text"
                         name="username"
                         placeholder="John Doe"
-                        // onChange={onChange}
-                        // onBlur={validateUsername}
-                        // value={comment.username}
+                        onChange={onChange}
+                        onBlur={validateUsername}
+                        value={comment.username}
                     />
 
-                    {/* {error.username &&
+                    {error.username &&
                         <div style={{ color: 'red' }}>{error.username}</div>
-                    } */}
+                    }
 
                     <textarea
                         name="comment"
                         placeholder="Comment......"
-                        // onChange={onChange}
-                        // value={comment.comment}
+                        onChange={onChange}
+                        value={comment.comment}
                     />
 
                     <input
