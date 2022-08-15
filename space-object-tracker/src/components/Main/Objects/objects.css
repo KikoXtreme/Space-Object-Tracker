@@ -1,0 +1,87 @@
+#objects-page {
+    background-color: transparent;
+    box-shadow: 0px 0px 40px 0px;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 800px;
+}
+
+#objects-page h1 {
+    color: white;
+    font-size: 32px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.objectItem {
+    display: flex;
+    max-width: 100%;
+    overflow: hidden;
+    min-height: 210px;
+    height: auto;
+    position: relative;
+    width: 600px;
+    margin: 2em auto 0;
+    text-align: center;
+    padding: 20px;
+    background-color: whitesmoke;
+    box-shadow: 0 0 3em 0 rgb(255, 255, 255);
+    border-radius: 1.5em;
+    border: .1em solid rgb(255, 255, 255);
+}
+
+.objectItem img {
+    /* position: absolute; */
+    margin-top: -10px;
+    border-radius: 50%;
+    height: 140px;
+    top: 30px;
+    right: 30px;
+    float: right;
+    padding: 5px;
+    width: 140px;
+}
+
+.objectItem>h6 {
+    font-size: 20px;
+    font-weight: 750;
+    color: #161618;
+}
+
+.objectItem>h2 {
+    font-size: 20px;
+    font-weight: 750;
+    color: #161618;
+}
+
+.details-button {
+    display: flex;
+    /* position: absolute; */
+    /* bottom: 30px; */
+    /* text-align: left; */
+    /* margin-top: auto;
+    margin-left: 20px; */
+    font-size: 18px;
+    color: white;
+    border: none;
+    border-radius: 1.5em;
+    padding: 10px;
+    ;
+    width: 60%;
+    outline: none;
+    background: linear-gradient(0deg, rgb(12, 0, 182) 0%, rgb(99, 169, 200) 35%, rgb(1, 17, 20) 100%);
+}
+
+.sections {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.no-objects {
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    font-size: 60px;
+    font-family: "Agency FB";
+}

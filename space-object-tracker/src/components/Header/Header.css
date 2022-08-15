@@ -6,7 +6,7 @@ header {
 header ul {
     padding: 2px;
     display: flex;
-    align-items:center;
+    align-items: center;
     justify-content: space-around;
     width: fit-content;
     margin: 0 auto;
@@ -24,7 +24,7 @@ header ul span {
 
 header li {
     list-style: none;
-    margin: .45em;
+    /* margin: .45em; */
     padding: 0 .95em;
 }
 
@@ -38,19 +38,21 @@ nav {
     border-top: 3px solid white;
 }
 
-.logo {
-    font-size: 1.5em;
-    color: white;
-    padding-bottom: 0;
-    font-style: normal;
+nav li {
+    margin: 6px;
+    font-size: 16px;
 }
+
 
 .logo {
     font-family: 'Courier New', Courier, monospace;
     letter-spacing: .8em;
-    margin: .6em 0;
+    padding: 10px;
     font-size: 24px;
     font-weight: bold;
+    font-size: 28px;
+    color: white;
+    font-style: normal;
 }
 
 .navbar {
@@ -61,14 +63,17 @@ nav {
 /* mini-navbar */
 
 .mini-navbar ul {
-    background: linear-gradient(0deg, rgb(233, 239, 234) 0%, rgb(99, 169, 200) 35%, rgb(165, 165, 10) 100%);
-    border-radius: 1.5em;
+    background: linear-gradient(0deg, rgb(113, 245, 135) 0%, rgb(99, 169, 200) 35%, rgb(165, 165, 10) 100%);
+    border-radius: 24px;
+    margin: 0 auto 10px auto;
 }
 
 .mini-navbar ul li+li {
     border-left: 2px solid lightgrey;
-    padding-left: .5em;
+
 }
+
+/* errors */
 
 .notification {
     position: fixed;

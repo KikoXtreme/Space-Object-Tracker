@@ -8,10 +8,7 @@ export const Register = () => {
     const { userLogin } = useContext(UserContext);
     const navigate = useNavigate();
 
-    const [error, setError] = useState({
-        username: '',
-        comment: '',
-    });
+    const [error, setError] = useState({});
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -36,33 +33,62 @@ export const Register = () => {
 
     const validateUsername = (e) => {
         const username = e.target.value;
-        let errorMsg = '';
+        let errorUserMsg = '';
 
         if (username.length < 3) {
-          errorMsg = 'Username must be at least 3 characters long';
-        } else if ( username.length > 10) {
-            errorMsg = 'Username must be at max 10 characters long';
+            errorUserMsg = 'Username must be at least 3 characters long';
+        } else if (username.length > 10) {
+            errorUserMsg = 'Username must be at max 10 characters long';
         }
 
         setError(state => ({
             ...state,
-            errorMsg,
+            errorUserMsg,
         }));
     }
 
     const validateEmail = (e) => {
         const email = e.target.value;
-        let errorMsg = '';
+        let errorEmailMsg = '';
 
-        if (email.length < 3) {
-          errorMsg = 'Username must be at least 3 characters long';
-        } else if ( email.length > 10) {
-            errorMsg = 'Username must be at max 10 characters long';
+        if (!/.{3,}@(gmail|yahoo|abv)\.(bg|com)$/.test(email)) {
+            errorEmailMsg = 'Please enter valid email';
         }
 
         setError(state => ({
             ...state,
-            errorMsg,
+            errorEmailMsg,
+        }));
+    }
+
+    const validatePassword = (e) => {
+        const password = e.target.value;
+        let errorPassMsg = '';
+
+        if (password.length < 3) {
+            errorPassMsg = 'Password must be at least 3 characters long';
+        }
+
+        setError(state => ({
+            ...state,
+            errorPassMsg,
+        }));
+    }
+
+    const validateRepass = (e) => {
+        let errorRepassMsg = '';
+
+        const formData = new FormData(e.target.parentElement.parentElement.parentElement);
+        const password = formData.get('password');
+        const repass = formData.get('repass');
+
+        if (password !== repass) {
+            errorRepassMsg = 'Password don\'t match!';
+        }
+
+        setError(state => ({
+            ...state,
+            errorRepassMsg,
         }));
     }
 
@@ -74,6 +100,7 @@ export const Register = () => {
                     <p className="field field-icon">
                         <label htmlFor="username"><span><i className="fas fa-user-astronaut"></i></span></label>
                         <input
+                            className={error.errorUserMsg ? "input-error" : null}
                             type="text"
                             name="username"
                             id="username"
@@ -81,11 +108,12 @@ export const Register = () => {
                             onBlur={validateUsername}
                         />
                     </p>
-                    {error.errorMsg && <div className="errors">{error.errorMsg}</div>}
+                    {error.errorUserMsg && <div className="errors">{error.errorUserMsg}</div>}
 
                     <p className="field field-icon">
                         <label htmlFor="email"><span><i className="fas fa-at"></i></span></label>
                         <input
+                            className={error.errorEmailMsg ? "input-error" : null}
                             type="email"
                             id="email"
                             name="email"
@@ -93,32 +121,40 @@ export const Register = () => {
                             onBlur={validateEmail}
                         />
                     </p>
-                    {error.errorMsg && <div className="errors">{error.errorMsg}</div>}
+                    {error.errorEmailMsg && <div className="errors">{error.errorEmailMsg}</div>}
 
                     <p className="field field-icon">
                         <label htmlFor="password"><span><i className="fas fa-lock"></i></span></label>
                         <input
+                            className={error.errorPassMsg ? "input-error" : null}
                             type="password"
                             name="password"
                             id="password"
                             placeholder="*****"
+                            onBlur={validatePassword}
                         />
                     </p>
+                    {error.errorPassMsg && <div className="errors">{error.errorPassMsg}</div>}
+
                     <p className="field field-icon">
                         <label htmlFor="repass"><span><i className="fas fa-lock"></i></span></label>
                         <input
+                            className={error.errorRepassMsg ? "input-error" : null}
                             type="password"
                             name="repass"
                             id="repass"
-                            placeholder="*****" />
+                            placeholder="*****"
+                            onBlur={validateRepass} />
                     </p>
+                    {error.errorRepassMsg && <div className="errors">{error.errorRepassMsg}</div>}
+
                     <p className="field field-icon">
                         <label htmlFor="counry"><span><i className="fas fa-globe"></i></span></label>
                         <input
                             type="text"
                             name="country"
                             id="country"
-                            placeholder="Bulgaria (optional?)" />
+                            placeholder="Bulgaria (optional)" />
                     </p>
                     {/* <input className="btn submit" type="submit" defaultValue="Register" /> */}
                     <button type='submit'>Create Account</button>

@@ -73,17 +73,6 @@
     padding-bottom: 0;
 }
 
-/* errors  */
-
-.errors {
-    border-radius: 0.3em;
-    color: red;
-    padding-top: 0;
-}
-
-.register .errors {
-    border-left-color: red;
-}
 
 /* login */
 
@@ -158,6 +147,18 @@ form.login{
     padding-bottom: 0;
 }
 
-.login .input-error {
+/* errors  */
+
+.errors {
+    border-radius: 0.3em;
+    color: red;
+    padding-top: 0;
+}
+
+#register-page .input-error{
+    border-left-color: red;
+}
+
+#login-page .input-error{
     border-left-color: red;
 }
