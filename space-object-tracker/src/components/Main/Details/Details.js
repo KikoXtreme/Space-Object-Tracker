@@ -14,15 +14,15 @@ export const Details = () => {
 
     const isOwner = currentObject._ownerId === user._id;
 
-    const [comment, setComment] = useState({
-        username: '',
-        comment: '',
-    });
+    // const [comment, setComment] = useState({
+    //     username: '',
+    //     comment: '',
+    // });
 
-    const [error, setError] = useState({
-        username: '',
-        comment: '',
-    });
+    // const [error, setError] = useState({
+    //     username: '',
+    //     comment: '',
+    // });
 
     useEffect(() => {
         getOne(objectId)
@@ -43,12 +43,12 @@ export const Details = () => {
         // addComment(objectId, result);
     }
 
-    const onChange = (e) => {
-        setComment(state => ({
-            ...state,
-            [e.target.name]: e.target.value
-        }));
-    }
+    // const onChange = (e) => {
+    //     setComment(state => ({
+    //         ...state,
+    //         [e.target.name]: e.target.value
+    //     }));
+    // }
 
     const objectDeleteHandler = () => {
         if (window.confirm('Are you sure you want to proceed?')) {
@@ -60,28 +60,28 @@ export const Details = () => {
         }
     }
 
-    const validateUsername = (e) => {
-        const username = e.target.value;
-        let errorMsg = '';
+    // const validateUsername = (e) => {
+    //     const username = e.target.value;
+    //     let errorMsg = '';
 
-        if (username.length < 3) {
-            errorMsg = 'Username must be at least 3 characters long';
-        } else if (username.length > 10) {
-            errorMsg = 'Username must be at max 10 characters long';
-        }
+    //     if (username.length < 3) {
+    //         errorMsg = 'Username must be at least 3 characters long';
+    //     } else if (username.length > 10) {
+    //         errorMsg = 'Username must be at max 10 characters long';
+    //     }
 
-        setError(state => ({
-            ...state,
-            username: errorMsg
-        }))
-    }
+    //     // setError(state => ({
+    //     //     ...state,
+    //     //     username: errorMsg
+    //     // }))
+    // }
 
     return (
         <section id="game-details">
             <h1>Game Details</h1>
             <div className="info-section">
                 <div className="game-header">
-                    <img className="game-img" src={currentObject.imageUrl} />
+                    <img className="game-img" src={currentObject.imageUrl} alt="Space Object"/>
                     <h1>{currentObject.title}</h1>
                     <span className="levels">MaxLevel: {currentObject.maxLevel}</span>
                     <p className="type">{currentObject.category}</p>

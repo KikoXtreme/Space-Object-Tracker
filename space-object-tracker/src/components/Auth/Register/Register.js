@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../../context/UserContext';
 import { register } from '../../../services/authService';
@@ -7,6 +7,11 @@ import '../auth.css';
 export const Register = () => {
     const { userLogin } = useContext(UserContext);
     const navigate = useNavigate();
+
+    const [error, setError] = useState({
+        username: '',
+        comment: '',
+    });
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -29,6 +34,38 @@ export const Register = () => {
             })
     }
 
+    const validateUsername = (e) => {
+        const username = e.target.value;
+        let errorMsg = '';
+
+        if (username.length < 3) {
+          errorMsg = 'Username must be at least 3 characters long';
+        } else if ( username.length > 10) {
+            errorMsg = 'Username must be at max 10 characters long';
+        }
+
+        setError(state => ({
+            ...state,
+            errorMsg,
+        }));
+    }
+
+    const validateEmail = (e) => {
+        const email = e.target.value;
+        let errorMsg = '';
+
+        if (email.length < 3) {
+          errorMsg = 'Username must be at least 3 characters long';
+        } else if ( email.length > 10) {
+            errorMsg = 'Username must be at max 10 characters long';
+        }
+
+        setError(state => ({
+            ...state,
+            errorMsg,
+        }));
+    }
+
     return (
         <section id="register-page">
             <form className="register" onSubmit={onSubmit}>
@@ -41,8 +78,11 @@ export const Register = () => {
                             name="username"
                             id="username"
                             placeholder="Username"
+                            onBlur={validateUsername}
                         />
                     </p>
+                    {error.errorMsg && <div className="errors">{error.errorMsg}</div>}
+
                     <p className="field field-icon">
                         <label htmlFor="email"><span><i className="fas fa-at"></i></span></label>
                         <input
@@ -50,8 +90,11 @@ export const Register = () => {
                             id="email"
                             name="email"
                             placeholder="kiril.valkov@yahoo.com"
+                            onBlur={validateEmail}
                         />
                     </p>
+                    {error.errorMsg && <div className="errors">{error.errorMsg}</div>}
+
                     <p className="field field-icon">
                         <label htmlFor="password"><span><i className="fas fa-lock"></i></span></label>
                         <input
