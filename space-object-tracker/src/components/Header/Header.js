@@ -8,11 +8,11 @@ export const Header = () => {
 
     return (
         <header>
-            <div className="mini-navbar-wrap">
-                <div className="logo-wrap">
+            <div className="navbar">
+                <div className="logo">
                     <Link to="/">Space Object Tracker</Link>
                 </div>
-                {user.email && <span>User Email: {user.email}</span>}
+                {/* {user.email && <span>User Email: {user.email}</span>} */}
                 {user.email
                     ? <div className="mini-navbar">
                         <ul>

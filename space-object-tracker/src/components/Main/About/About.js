@@ -14,7 +14,7 @@ export const About = () => {
                     stars, to characterize their properties and to identify planets that could harbor life.
                 </p>
                 <p>
-                    <Link to="/objects">Find your object now.</Link><i className="fa fa-globe" aria-hidden="true"></i>
+                    <Link to="/objects">Find your object now. </Link><i className="fa fa-globe" aria-hidden="true"></i>
                 </p>
             </section>
 

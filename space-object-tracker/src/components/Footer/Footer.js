@@ -1,8 +1,8 @@
-import styles from './Footer.module.css'
+import './footer.css'
 
 export const Footer = () => {
     return (
-        <footer className={styles.footer}>
+        <footer>
             <p>
             More than 27,000 objects and pieces of orbital debris are tracked by the DoD's global Space Surveillance Network (SSN) sensors.
             </p>

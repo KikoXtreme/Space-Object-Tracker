@@ -4,9 +4,10 @@ header {
 }
 
 header ul {
-    padding: 3px;
+    padding: 2px;
     display: flex;
-    align-items: center;
+    align-items:center;
+    justify-content: space-around;
     width: fit-content;
     margin: 0 auto;
 }
@@ -19,7 +20,6 @@ header ul span {
 .mini-navbar ul {
     border: 1px solid white;
     border-radius: 1.5em;
-    width: 100%;
 }
 
 header li {
@@ -32,28 +32,28 @@ header a {
     text-decoration: none;
     color: white;
     cursor: pointer;
-    padding-left: 80px;
 }
 
 nav {
     border-top: 3px solid white;
 }
 
-.logo-wrap {
-    font-family: 'Courier New', Courier, monospace;
-    letter-spacing: .8em;
-    /* margin: .6em 0; */
-    font-size: 2em;
+.logo {
+    font-size: 1.5em;
     color: white;
     padding-bottom: 0;
     font-style: normal;
 }
 
-.mini-navbar-wrap {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+.logo {
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: .8em;
+    margin: .6em 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar {
     width: 80%;
     margin: auto;
 }
