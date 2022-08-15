@@ -12,18 +12,17 @@ export const Register = () => {
         e.preventDefault();
 
         const formData = new FormData(e.target);
-
-        const username = formData.get('username');
         const email = formData.get('email');
         const password = formData.get('password');
         const repass = formData.get('repass');
+        const username = formData.get('username');
         const country = formData.get('country');
 
         if (password !== repass) {
             return;
         }
 
-        register(username, email, password, country)
+        register(email, password, username, country)
             .then(userData => {
                 userLogin(userData);
                 navigate('/');

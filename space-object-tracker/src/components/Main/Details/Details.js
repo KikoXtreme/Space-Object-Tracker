@@ -1,12 +1,18 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { ObjectContext } from "../../../context/ObjectContext";
-import { getOne } from "../../../services/objectService";
+import { UserContext } from "../../../context/UserContext";
+import { createComment } from "../../../services/commentService";
+import { deleteOne, getOne } from "../../../services/objectService";
 
 export const Details = () => {
     const [currentObject, setCurrentObject] = useState({});
-    const { addComment } = useContext(ObjectContext);
+    const { addComment, objectDelete } = useContext(ObjectContext);
+    const { user } = useContext(UserContext);
     const { objectId } = useParams();
+    const navigate = useNavigate();
+
+    const isOwner = currentObject._ownerId === user._id;
 
     const [comment, setComment] = useState({
         username: '',
@@ -27,10 +33,14 @@ export const Details = () => {
 
     const addCommentHandler = (e) => {
         e.preventDefault();
-
-        const result = `${comment.username} : ${comment.comment}`;
-
-        addComment(objectId, result);
+        const formData = new FormData(e.target);
+        const comment = formData.get('comment');
+        createComment(objectId, comment)
+            .then(result => {
+                addComment(objectId, comment)
+            })
+        // const result = `${comment.username} : ${comment.comment}`;
+        // addComment(objectId, result);
     }
 
     const onChange = (e) => {
@@ -40,10 +50,19 @@ export const Details = () => {
         }));
     }
 
+    const objectDeleteHandler = () => {
+        if (window.confirm('Are you sure you want to proceed?')) {
+            deleteOne(objectId)
+                .then(() => {
+                    objectDelete(objectId);
+                    navigate('/objects');
+                })
+        }
+    }
+
     const validateUsername = (e) => {
         const username = e.target.value;
         let errorMsg = '';
-        console.log(username)
 
         if (username.length < 3) {
             errorMsg = 'Username must be at least 3 characters long';
@@ -62,68 +81,33 @@ export const Details = () => {
             <h1>Game Details</h1>
             <div className="info-section">
                 <div className="game-header">
-                    <img className="game-img" src={currentObject.imageUrl} alt="Space Object" />
+                    <img className="game-img" src={currentObject.imageUrl} />
                     <h1>{currentObject.title}</h1>
                     <span className="levels">MaxLevel: {currentObject.maxLevel}</span>
                     <p className="type">{currentObject.category}</p>
                 </div>
-                <p className="text">
-                    {currentObject.summary}
-                </p>
+                <p className="text">{currentObject.summary}</p>
 
                 <div className="details-comments">
                     <h2>Comments:</h2>
                     <ul>
-                        {/* {game.comments?.map(x => 
-                        <li className="comment">
-                            <p>{x}</p>
-                        </li>
-                    )} */}
+                        {currentObject.comments?.map(x => <li key={x} className="comment"><p>{x}</p></li>)}
                     </ul>
-
-                    {/* {!game.comments &&
-                    <p className="no-comment">No comments.</p>
-                    } */}
+                    {!currentObject.comments && <p className="no-comment">No comments.</p>}
                 </div>
-
-                <div className="buttons">
-                    <Link to={`/objects/${objectId}/edit`} className="button">
-                        Edit
-                    </Link>
-                    <Link to="#" className="button">
-                        Delete
-                    </Link>
-                </div>
+                {isOwner &&
+                    <div className="buttons">
+                        <Link to={`/objects/${objectId}/edit`} className="button">Edit</Link>
+                        <button onClick={objectDeleteHandler} className="button"> Delete</button>
+                    </div>
+                }
             </div>
 
             <article className="create-comment">
                 <label>Add new comment:</label>
                 <form className="form" onSubmit={addCommentHandler}>
-                    <input
-                        type="text"
-                        name="username"
-                        placeholder="John Doe"
-                        onChange={onChange}
-                        onBlur={validateUsername}
-                        value={comment.username}
-                    />
-
-                    {error.username &&
-                        <div style={{ color: 'red' }}>{error.username}</div>
-                    }
-
-                    <textarea
-                        name="comment"
-                        placeholder="Comment......"
-                        onChange={onChange}
-                        value={comment.comment}
-                    />
-
-                    <input
-                        className="btn submit"
-                        type="submit"
-                        value="Add Comment"
-                    />
+                    <textarea name="comment" placeholder="Comment......" />
+                    <input className="btn submit" type="submit" value="Add Comment" />
                 </form>
             </article>
         </section>

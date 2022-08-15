@@ -5,6 +5,7 @@ import './Header.css';
 
 export const Header = () => {
     const { user } = useContext(UserContext);
+    console.log(user);
 
     return (
         <header>
@@ -13,7 +14,7 @@ export const Header = () => {
                     <Link to="/">Space Object Tracker</Link>
                 </div>
                 {/* {user.email && <span>User Email: {user.email}</span>} */}
-                {user.email
+                {user.accessToken
                     ? <div className="mini-navbar">
                         <ul>
                             <li> <Link to="/users/profile">{user.email}'s Profile</Link></li>
@@ -36,7 +37,7 @@ export const Header = () => {
                     <li><Link to="/objects/create">New Discovery</Link></li>
                     <li><Link to="/objects/search">Search for an Object</Link></li>
                     <li><Link to="/objects/latest">Latest Discoveries</Link></li>
-                    <li><p className="notification">ERROR MESSAGE??</p></li>
+                    {/* <li><p className="notification">ERROR MESSAGE??</p></li> */}
                 </ul>
             </nav>
         </header>

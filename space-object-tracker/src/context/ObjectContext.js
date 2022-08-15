@@ -35,6 +35,10 @@ export const ObjectProvider = ({ children }) => {
         })
     }
 
+    const objectDelete = (objectId) => {
+        setObjects(state => state.filter(x => x._id !== objectId));
+    }
+
     useEffect(() => {
         getAll()
             .then(result => {
@@ -43,7 +47,7 @@ export const ObjectProvider = ({ children }) => {
     }, []);
 
     return (
-        <ObjectContext.Provider value={{ objects, addObject, editObject, addComment }}>
+        <ObjectContext.Provider value={{ objects, addObject, editObject, addComment, objectDelete }}>
             {children}
         </ObjectContext.Provider>
     );
