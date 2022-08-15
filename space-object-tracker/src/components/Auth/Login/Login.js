@@ -31,27 +31,27 @@ export const Login = () => {
         <section id="login-page" className="auth">
             <form className="login" onSubmit={onSubmit}>
                 <div className="container">
-                    <div className="brand-logo" />
-                    <h1>Login</h1>
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="kiril.valkov@yahoo.com"
-                    />
-                    <label htmlFor="login-pass">Password:</label>
-                    <input
-                        type="password"
-                        id="login-password"
-                        name="password"
-                        placeholder="*****"
-                    />
-                    <input type="submit" className="btn submit" value="Login" />
-                    <p className="field">
-                        <span>
-                            If you don't have profile click <Link to="/users/register">here</Link>
-                        </span>
+                    <h2>Login</h2>
+                    <p className="field field-icon">
+                        <label htmlFor="email"><span><i className="fas fa-at"></i></span></label>
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            placeholder="kiril.valkov@yahoo.com" />
+                    </p>
+                    <p className="field field-icon">
+                        <label htmlFor="password"><span><i className="fas fa-lock"></i></span></label>
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            placeholder="*****" />
+                    </p>
+                    {/* <input type="submit" className="btn submit" value="Login" /> */}
+                    <button type='submit'>Login</button>
+                    <p className="text-center">
+                        <span>Have an account? <Link to="/users/register">Register</Link></span>
                     </p>
                 </div>
             </form>

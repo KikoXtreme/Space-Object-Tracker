@@ -78,10 +78,8 @@ export const Register = () => {
                             id="country"
                             placeholder="Bulgaria (optional?)" />
                     </p>
-
                     {/* <input className="btn submit" type="submit" defaultValue="Register" /> */}
                     <button type='submit'>Create Account</button>
-
                     <p className="text-center">
                         <span>Already registered? <Link to="/users/login">Log In</Link></span>
                     </p>

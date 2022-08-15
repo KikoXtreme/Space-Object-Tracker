@@ -92,9 +92,6 @@ form.login{
     width: 400px;
     margin: 2em auto 0;
     text-align: center;
-}
-
-.login fieldset {
     padding: 0.9em;
     background-color: whitesmoke;
     box-shadow: 0 0 3em 0 rgb(255, 255, 255);

@@ -2,8 +2,7 @@
   text-align: center;
 }
 
-/*home img*/
-
-.welcome img{
-  max-width: 500px;
+body {
+  margin: 0;
+  background: url(../public/assets/stars.png) no-repeat center center fixed
 }
