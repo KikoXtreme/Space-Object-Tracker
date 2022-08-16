@@ -4,7 +4,6 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-
     const [user, setUser] = useLocalStorage('user', {});
 
     const userLogin = (userData) => {

@@ -14,12 +14,23 @@ export const ObjectProvider = ({ children }) => {
             ...state,
             objectData,
         ]);
-        console.log(Object.fromEntries(objects) + ' state')
         navigate('/objects');
     }
 
     const editObject = (objectId, objectData) => {
         setObjects(state => state.map(x => x._id === objectId ? objectData : x));
+    }
+
+    const detailsObject = (objectId, objectData) => {
+        setObjects(state => state.map(x => x._id === objectId ? objectData : x));
+    }
+
+    const deleteObject = (objectId) => {
+        setObjects(state => state.filter(x => x._id !== objectId));
+    }
+
+    const selectObject = (objectId) => {
+        return objects.find(x => x._id === objectId) || {};
     }
 
     const addComment = (objectId, comment) => {
@@ -33,10 +44,7 @@ export const ObjectProvider = ({ children }) => {
                 { ...object, comments }
             ]
         })
-    }
-
-    const objectDelete = (objectId) => {
-        setObjects(state => state.filter(x => x._id !== objectId));
+        // state.map(x => x._id === action.gameId ? { ...x, comments: [...x.comments, action.payload] } : x)
     }
 
     useEffect(() => {
@@ -47,7 +55,7 @@ export const ObjectProvider = ({ children }) => {
     }, []);
 
     return (
-        <ObjectContext.Provider value={{ objects, addObject, editObject, addComment, objectDelete }}>
+        <ObjectContext.Provider value={{ objects, addObject, editObject, deleteObject, selectObject, detailsObject, addComment }}>
             {children}
         </ObjectContext.Provider>
     );

@@ -23,7 +23,6 @@ const request = async (method, url, data) => {
             });
         }
         const res = await currentRequest;
-        console.log(res);
         const result = await res.json();
 
         return result;
