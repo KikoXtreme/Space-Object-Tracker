@@ -9,7 +9,6 @@ export const Create = () => {
         e.preventDefault();
 
         const objectData = Object.fromEntries(new FormData(e.target));
-        // console.log(objectData)
         create(objectData)
             .then(result => {
                 addObject(result)
@@ -21,6 +20,7 @@ export const Create = () => {
             <form id="create" onSubmit={onSubmit}>
                 <div className="container">
                     <h1>Create Game</h1>
+
                     <label htmlFor="leg-title">Legendary title:</label>
                     <input
                         type="text"
@@ -28,6 +28,7 @@ export const Create = () => {
                         name="title"
                         placeholder="Enter game title..."
                     />
+
                     <label htmlFor="category">Category:</label>
                     <input
                         type="text"
@@ -35,6 +36,7 @@ export const Create = () => {
                         name="category"
                         placeholder="Enter game category..."
                     />
+
                     <label htmlFor="levels">MaxLevel:</label>
                     <input
                         type="number"
@@ -45,7 +47,6 @@ export const Create = () => {
                     />
 
                     <label htmlFor="game-img">Image:</label>
-
                     <input
                         type="text"
                         id="imageUrl"
@@ -54,14 +55,9 @@ export const Create = () => {
                     />
 
                     <label htmlFor="summary">Summary:</label>
-
                     <textarea name="summary" id="summary" defaultValue={""} />
 
-                    <input
-                        className="btn submit"
-                        type="submit"
-                        value="Create Game"
-                    />
+                    <input className="btn submit" type="submit" value="Create Game" />
                 </div>
             </form>
         </section>

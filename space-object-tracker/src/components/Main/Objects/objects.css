@@ -17,14 +17,13 @@
     display: flex;
     max-width: 100%;
     overflow: hidden;
-    min-height: 210px;
     height: auto;
     position: relative;
     width: 600px;
-    margin: 2em auto 0;
+    margin: 24px auto 0;
     text-align: center;
     padding: 20px;
-    background-color: whitesmoke;
+    background-color: transparent;
     box-shadow: 0 0 3em 0 rgb(255, 255, 255);
     border-radius: 1.5em;
     border: .1em solid rgb(255, 255, 255);
@@ -32,26 +31,26 @@
 
 .objectItem img {
     /* position: absolute; */
-    margin-top: -10px;
-    border-radius: 50%;
-    height: 140px;
+    /* margin-top: -10px; */
+    /* border-radius: 50%; */
+    height: 100px;
+    width: 100px;
     top: 30px;
     right: 30px;
     float: right;
     padding: 5px;
-    width: 140px;
 }
 
-.objectItem>h6 {
+.objectItem h6 {
     font-size: 20px;
-    font-weight: 750;
-    color: #161618;
+    font-weight: bold;
+    color: white;
 }
 
-.objectItem>h2 {
+.objectItem h2 {
     font-size: 20px;
-    font-weight: 750;
-    color: #161618;
+    font-weight: bold;
+    color: white;
 }
 
 .details-button {
@@ -81,7 +80,6 @@
 .no-objects {
     color: white;
     text-align: center;
-    font-weight: 700;
+    font-weight: bold;
     font-size: 60px;
-    font-family: "Agency FB";
 }

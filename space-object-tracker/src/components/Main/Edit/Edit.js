@@ -4,7 +4,7 @@ import { ObjectContext } from "../../../context/ObjectContext";
 import { edit, getOne } from "../../../services/objectService";
 
 export const Edit = () => {
-    const [editedObject, setEditedObject] = useState({});
+    const [currentObject, setCurrentObject] = useState({});
     const { editObject } = useContext(ObjectContext);
     const { objectId } = useParams();
     const navigate = useNavigate();
@@ -12,7 +12,7 @@ export const Edit = () => {
     useEffect(() => {
         getOne(objectId)
             .then(objectData => {
-                setEditedObject(objectData)
+                setCurrentObject(objectData)
             })
     }, [objectId]);
 
@@ -25,7 +25,7 @@ export const Edit = () => {
             .then(result => {
                 editObject(objectId, result);
                 navigate('/objects');
-                // navigate(`/catalog/${gameId}`)
+                // navigate(`/objects/${objectId}`)
             })
     }
 
@@ -35,21 +35,21 @@ export const Edit = () => {
                 <div className="container">
                     <h1>Edit Game</h1>
                     <label htmlFor="leg-title">Legendary title:</label>
-                    <input type="text" id="title" name="title" defaultValue={editedObject.title} />
+                    <input type="text" id="title" name="title" defaultValue={currentObject.title} />
                     <label htmlFor="category">Category:</label>
-                    <input type="text" id="category" name="category" defaultValue={editedObject.category} />
+                    <input type="text" id="category" name="category" defaultValue={currentObject.category} />
                     <label htmlFor="levels">MaxLevel:</label>
                     <input
                         type="number"
                         id="maxLevel"
                         name="maxLevel"
                         min={1}
-                        defaultValue={editedObject.maxLevel}
+                        defaultValue={currentObject.maxLevel}
                     />
                     <label htmlFor="game-img">Image:</label>
-                    <input type="text" id="imageUrl" name="imageUrl" defaultValue={editedObject.imageUrl} />
+                    <input type="text" id="imageUrl" name="imageUrl" defaultValue={currentObject.imageUrl} />
                     <label htmlFor="summary">Summary:</label>
-                    <textarea name="summary" id="summary" defaultValue={editedObject.summary} />
+                    <textarea name="summary" id="summary" defaultValue={currentObject.summary} />
                     <input className="btn submit" type="submit" defaultValue="Edit Game" />
                 </div>
             </form>
