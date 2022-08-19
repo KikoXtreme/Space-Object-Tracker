@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { ObjectContext } from "../../../context/ObjectContext";
 import { create } from "../../../services/objectService";
+import './create.css'
 
 export const Create = () => {
     const { addObject } = useContext(ObjectContext);
@@ -13,53 +14,61 @@ export const Create = () => {
             .then(result => {
                 addObject(result)
             });
+        console.log(objectData)
     }
 
     return (
-        <section id="create-page" className="auth">
-            <form id="create" onSubmit={onSubmit}>
-                <div className="container">
-                    <h1>Create Game</h1>
-
-                    <label htmlFor="leg-title">Legendary title:</label>
+        <div className="new-object-border">
+            <div className="header-background">
+                <span>Object Discovery</span>
+            </div>
+            <form onSubmit={onSubmit}>
+                <div className="new-object-title">
+                    <label htmlFor="title">Objects's Name: </label>
                     <input
                         type="text"
                         id="title"
                         name="title"
-                        placeholder="Enter game title..."
+                        placeholder="Alpha 1 Satelite..."
+                        required minLength="5"
                     />
-
-                    <label htmlFor="category">Category:</label>
+                </div>
+                <div className="new-object-title">
+                    <label htmlFor="type">Type: </label>
                     <input
                         type="text"
-                        id="category"
-                        name="category"
-                        placeholder="Enter game category..."
+                        id="type"
+                        name="type"
+                        placeholder="Satelite, Debris..."
+                        required minLength="5"
                     />
-
-                    <label htmlFor="levels">MaxLevel:</label>
-                    <input
-                        type="number"
-                        id="maxLevel"
-                        name="maxLevel"
-                        min={1}
-                        placeholder={1}
-                    />
-
-                    <label htmlFor="game-img">Image:</label>
+                </div>
+                <div className="new-object-title">
+                    <label htmlFor="speed">Orbital Speed: </label>
                     <input
                         type="text"
-                        id="imageUrl"
-                        name="imageUrl"
-                        placeholder="Upload a photo..."
+                        id="speed"
+                        name="speed"
+                        placeholder="km/h..."
+                        required minLength="3"
                     />
-
-                    <label htmlFor="summary">Summary:</label>
-                    <textarea name="summary" id="summary" defaultValue={""} />
-
-                    <input className="btn submit" type="submit" value="Create Game" />
+                </div>
+                <div className="new-object-content">
+                    <label htmlFor="description">Description</label>
+                    <textarea
+                        type="text"
+                        name="description"
+                        id="description"
+                        rows="8"
+                        placeholder="Object's description and specifications..."
+                        required minLength="10"></textarea>
+                </div>
+                <div className="new-object-buttons">
+                    <button type="button" className="cancel">Cancel</button>
+                    <button className="public" type="submit">Submit</button>
+                    {/* <input className="btn submit" type="submit" value="Create Game" /> */}
                 </div>
             </form>
-        </section>
+        </div>
     );
 }
