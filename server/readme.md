@@ -17,14 +17,14 @@ The Base URL for the API is: `http://localhost:3030/jsonstore`
 
 The documentation below assumes you are pre-pending the Base URL to the endpoints in order to make requests.
 
-# Endpoints: Todos
+# Endpoints: Objects
 
-- `/todos` -- get todo list/ create todo;
-- `/todos/{todoId}` -- get todo/update todo/ delete todo by provided id;;
+- `/objects` -- get object list/ create object;
+- `/objects/{objectId}` -- get object/update object/ delete object by provided id;;
 
-## Get todo list
+## Get object list
 
-Send a `GET` request to `/todos`. The service will respond with an array of todo objects.
+Send a `GET` request to `/objects`. The service will respond with an array of object objects.
 
 ### Success Response:
 
@@ -42,9 +42,9 @@ Content:
 ]
 ```
 
-## Create a new todo
+## Create a new object
 
-Create a new todo by sending a `POST` request to `/todos` with properties `text` and `isCompleted`. The service will respond with an object, containing newly created todo.
+Create a new object by sending a `POST` request to `/objects` with properties `text` and `isCompleted`. The service will respond with an object, containing newly created object.
 
 ### Body
 
@@ -69,9 +69,9 @@ Content:
 }
 ```
 
-## Update todo by provided todoId
+## Update object by provided objectId
 
-Update an existing todo by sending a `PUT` request to `/todos/{todoId}` with property `isCompleted`. The service will respond with an object, containing newly updated todo.
+Update an existing object by sending a `PUT` request to `/objects/{objectId}` with property `isCompleted`. The service will respond with an object, containing newly updated object.
 
 ### Body
 
