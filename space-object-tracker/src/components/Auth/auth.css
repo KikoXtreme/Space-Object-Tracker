@@ -73,12 +73,11 @@
     padding-bottom: 0;
 }
 
-
 /* login */
 
-form.login{
+form.login {
     width: 400px;
-    margin: 2em auto 0;
+    margin: 72px auto 80px;
     text-align: center;
     padding: 0.9em;
     background-color: whitesmoke;
@@ -107,11 +106,11 @@ form.login{
     border-bottom-right-radius: 1.5em;
 }
 
-.login select{
+.login select {
     border-color: black;
 }
 
-.login button{
+.login button {
     color: white;
     border: none;
     border-radius: 1.5em;
@@ -148,17 +147,16 @@ form.login{
 }
 
 /* errors  */
-
 .errors {
     border-radius: 0.3em;
     color: red;
     padding-top: 0;
 }
 
-#register-page .input-error{
+#register-page .input-error {
     border-left-color: red;
 }
 
-#login-page .input-error{
+#login-page .input-error {
     border-left-color: red;
 }

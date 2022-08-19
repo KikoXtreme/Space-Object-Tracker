@@ -13,6 +13,7 @@ export const Register = () => {
     const onSubmit = (e) => {
         e.preventDefault();
 
+        // const userData = Object.fromEntries(new FormData(e.target));
         const formData = new FormData(e.target);
         const email = formData.get('email');
         const password = formData.get('password');

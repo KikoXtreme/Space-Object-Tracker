@@ -2,8 +2,8 @@ import { post } from "./util/request"
 
 const url = 'http://localhost:3030/users';
 
-export const login = (email, password) => post(`${url}/login`, { email, password });
-export const register = (email, password, username) => post(`${url}/register`, { email, password, username });
+export const login = (email, password, username, country) => post(`${url}/login`, { email, password, username, country });
+export const register = (email, password, username, country) => post(`${url}/register`, { email, password, username, country });
 
 export const logout = async (accessToken) => {
     try {

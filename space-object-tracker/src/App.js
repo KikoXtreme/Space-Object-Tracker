@@ -16,6 +16,7 @@ import { About } from './components/Main/About/About';
 import { Create } from './components/Main/Create/Create';
 import { Edit } from './components/Main/Edit/Edit';
 import { Details } from './components/Main/Details/Details';
+import { Profile } from './components/Auth/Profile/Profile';
 
 function App() {
     return (
@@ -30,6 +31,7 @@ function App() {
                             <Route path='/users/login' element={<Login />}></Route>
                             <Route path='/users/register' element={<Register />}></Route>
                             <Route path='/users/logout' element={<Logout />}></Route>
+                            <Route path='/users/profile' element={<Profile />}></Route>
                             <Route path='/objects' element={<Objects />}></Route>
 
                             <Route element={<PrivateRoute />}>

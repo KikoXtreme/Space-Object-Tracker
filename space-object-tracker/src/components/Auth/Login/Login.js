@@ -15,10 +15,12 @@ export const Login = () => {
         const {
             email,
             password,
+            username,
+            country
         } = Object.fromEntries(new FormData(e.target));
-        console.log(email, password)
+        console.log(email, password, username, country)
 
-        login(email, password)
+        login(email, password, username, country)
             .then(userData => {
                 userLogin(userData);
                 navigate('/');
