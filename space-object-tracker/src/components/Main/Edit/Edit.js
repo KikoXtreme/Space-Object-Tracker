@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ObjectContext } from "../../../context/ObjectContext";
 import { edit, getOne } from "../../../services/objectService";
+import './edit.css';
 
 export const Edit = () => {
     const [currentObject, setCurrentObject] = useState({});
@@ -30,29 +31,61 @@ export const Edit = () => {
     }
 
     return (
-        <section id="edit-page" className="auth">
+        <div id="edit-page" className="edit-object-border">
             <form id="edit" onSubmit={onSubmit}>
                 <div className="container">
-                    <h1>Edit Game</h1>
-                    <label htmlFor="leg-title">Legendary title:</label>
-                    <input type="text" id="title" name="title" defaultValue={currentObject.title} />
-                    <label htmlFor="category">Category:</label>
-                    <input type="text" id="category" name="category" defaultValue={currentObject.category} />
-                    <label htmlFor="levels">MaxLevel:</label>
-                    <input
-                        type="number"
-                        id="maxLevel"
-                        name="maxLevel"
-                        min={1}
-                        defaultValue={currentObject.maxLevel}
-                    />
-                    <label htmlFor="game-img">Image:</label>
-                    <input type="text" id="imageUrl" name="imageUrl" defaultValue={currentObject.imageUrl} />
-                    <label htmlFor="summary">Summary:</label>
-                    <textarea name="summary" id="summary" defaultValue={currentObject.summary} />
-                    <input className="btn submit" type="submit" defaultValue="Edit Game" />
+                <div className="header-background">
+                <span>Edit Object's Information</span>
+            </div>
+                    {/* <h1>Edit Object's Information</h1> */}
+
+                    <div className="edit-object-title">
+                        <label htmlFor="title">Objects's Name: </label>
+                        <input
+                            type="text"
+                            id="title"
+                            name="title"
+                            required minLength="3"
+                            defaultValue={currentObject.title}
+                        />
+                    </div>
+                    <div className="edit-object-title">
+                        <label htmlFor="type">Type: </label>
+                        <input
+                            type="text"
+                            id="type"
+                            name="type"
+                            required minLength="3"
+                            defaultValue={currentObject.type}
+                        />
+                    </div>
+                    <div className="edit-object-title">
+                        <label htmlFor="speed">Orbital Speed: </label>
+                        <input
+                            type="number"
+                            id="speed"
+                            name="speed"
+                            required minLength="3"
+                            defaultValue={currentObject.speed}
+                        />
+                    </div>
+                    <div className="edit-object-content">
+                        <label htmlFor="description">Description</label>
+                        <textarea
+                            type="text"
+                            name="description"
+                            id="description"
+                            rows="8"
+                            required minLength="10"
+                            defaultValue={currentObject.description}
+                        />
+                    </div>
+                    {/* <label htmlFor="game-img">Image:</label>
+                    <input type="text" id="imageUrl" name="imageUrl" defaultValue={currentObject.imageUrl} /> */}
+
+                    <input className="btn submit" type="submit" value="Edit Object" />
                 </div>
             </form>
-        </section>
+        </div>
     );
 }

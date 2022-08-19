@@ -1,4 +1,4 @@
-.objectItem{
+.objectItem {
     display: block;
     align-items: center;
     justify-content: center;
@@ -11,14 +11,19 @@
     color: whitesmoke;
 }
 
-.sections{
+.sections {
     display: block;
     text-align: center;
 }
 
+.sections:first-child {
+    margin-bottom: 20px;
+}
 
-
-
+.sections h2 {
+    font-size: 32px;
+    margin: 10px 0;
+}
 
 /* buttons */
 
@@ -29,15 +34,17 @@ a+a {
 .sections a {
     background: linear-gradient(0deg, rgb(12, 0, 182) 0%, rgb(99, 169, 200) 35%, rgb(1, 17, 20) 100%);
     padding: 0.4em 1.5em;
-    border: 1px solid #333333;
+    border: 1px solid white;
     border-radius: 20px;
     color: whitesmoke;
     font-weight: bold;
     text-decoration: none;
+    display: inline-block;
+    width: 100px;
 }
 
 .sections a:hover {
-    color: rgb(160, 160, 160);
+    color: yellow;
     font-weight: bold;
     cursor: pointer;
 }
@@ -53,4 +60,12 @@ a+a {
     text-align: center;
     margin: 8px auto 8px auto;
     width: 800px;
+}
+
+/* empty div */
+.empty {
+    border: 0.5px solid whitesmoke;
+    font-weight: bold;
+    text-decoration: underline dotted aqua;
+    color: aqua;
 }

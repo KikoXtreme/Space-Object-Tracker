@@ -4,6 +4,7 @@ import { ObjectContext } from "../../../context/ObjectContext";
 import { UserContext } from "../../../context/UserContext";
 import { createComment, getCommentByObjectId } from "../../../services/commentService";
 import { deleteOne, getOne } from "../../../services/objectService";
+import './details.css';
 
 export const Details = () => {
     const { addComment, deleteObject, selectObject, detailsObject } = useContext(ObjectContext);
@@ -18,10 +19,10 @@ export const Details = () => {
         (async () => {
             const details = await getOne(objectId);
             const comments = await getCommentByObjectId(objectId);
-            
-            detailsObject(objectId, { ...details, comments: comments.map(x => `${x.user.email}: ${x.text}`) })
+
+            detailsObject(objectId, { ...details, comments: comments.map(x => `${x.user.email}: ${x.comment}`) })
         })();
-    }, []);
+    }, [objectId]);
 
     const addCommentHandler = (e) => {
         e.preventDefault();
@@ -60,38 +61,44 @@ export const Details = () => {
     // }
 
     return (
-        <section id="game-details">
-            <h1>Game Details</h1>
-            <div className="info-section">
-                <div className="game-header">
-                    <img className="game-img" src={currentObject.imageUrl} alt="Space Object" />
-                    <h1>{currentObject.title}</h1>
-                    <span className="levels">MaxLevel: {currentObject.maxLevel}</span>
-                    <p className="type">{currentObject.category}</p>
+        <section id="object-details">
+            <h1>Object Details</h1>
+            <div className="details-section">
+                <div className="object-header">
+                    {/* <img className="object-img" src={currentObject.imageUrl} alt="Space Object" /> */}
+                    <h1><i className="fa-solid fa-magnifying-glass"></i> {currentObject.title}</h1>
+                    <div className="empty"></div>
+                    <h3><i className="fa-solid fa-satellite"></i> {currentObject.type}</h3>
+                    <h3><i className="fa-solid fa-gauge-high"></i> {currentObject.speed} km/h</h3>
+                    <div className="empty"></div>
+                    <h3><i className="fa-solid fa-align-right"></i> {currentObject.description}</h3>
+                    <div className="empty"></div>
+                {isOwner
+                    ? <div className="buttons">
+                        <Link to={`/objects/${objectId}/edit`} className="button">Edit</Link>
+                        <button onClick={deleteObjectHandler} className="button">Delete</button>
+                    </div>
+                    : null
+                }
                 </div>
-                <p className="text">{currentObject.summary}</p>
+
 
                 <div className="details-comments">
-                    <h2>Comments:</h2>
+                    <h3>Comments <i className="fa-solid fa-comment-dots"></i></h3>
                     <ul>
                         {currentObject.comments?.map(x => <li key={x.text} className="comment"><p>{x}</p></li>)}
                     </ul>
                     {!currentObject.comments && <p className="no-comment">No comments.</p>}
                 </div>
-                {isOwner &&
-                    <div className="buttons">
-                        <Link to={`/objects/${objectId}/edit`} className="button">Edit</Link>
-                        <button onClick={deleteObjectHandler} className="button"> Delete</button>
-                    </div>
-                }
             </div>
-            <article className="create-comment">
-                <label>Add new comment:</label>
+
+            <div className="create-comment">
+                <h3>Add Comment <i className="fa-solid fa-comments"></i></h3>
                 <form className="form" onSubmit={addCommentHandler}>
                     <textarea name="comment" placeholder="Add Comment Here..." />
                     <input className="btn submit" type="submit" value="Add Comment" />
                 </form>
-            </article>
+            </div>
         </section>
     );
 }

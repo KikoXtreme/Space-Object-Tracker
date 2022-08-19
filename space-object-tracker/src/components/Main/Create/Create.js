@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { ObjectContext } from "../../../context/ObjectContext";
 import { create } from "../../../services/objectService";
 import './create.css'
@@ -30,7 +31,7 @@ export const Create = () => {
                         id="title"
                         name="title"
                         placeholder="Alpha 1 Satelite..."
-                        required minLength="5"
+                        required minLength="3"
                     />
                 </div>
                 <div className="new-object-title">
@@ -40,16 +41,17 @@ export const Create = () => {
                         id="type"
                         name="type"
                         placeholder="Satelite, Debris..."
-                        required minLength="5"
+                        required minLength="3"
                     />
                 </div>
                 <div className="new-object-title">
                     <label htmlFor="speed">Orbital Speed: </label>
                     <input
-                        type="text"
+                        type="number"
                         id="speed"
                         name="speed"
                         placeholder="km/h..."
+                        min={100}
                         required minLength="3"
                     />
                 </div>
@@ -64,9 +66,9 @@ export const Create = () => {
                         required minLength="10"></textarea>
                 </div>
                 <div className="new-object-buttons">
-                    <button type="button" className="cancel">Cancel</button>
+                    <Link to="/">Cancel</Link>
                     <button className="public" type="submit">Submit</button>
-                    {/* <input className="btn submit" type="submit" value="Create Game" /> */}
+                    {/* <input className="btn submit" type="submit" value="Create Object" /> */}
                 </div>
             </form>
         </div>
