@@ -6,17 +6,17 @@ import './App.css';
 import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
-import { Home } from './components/Main/Home/Home';
 import { Login } from './components/Auth/Login/Login';
 import { Register } from './components/Auth/Register/Register';
 import { Logout } from './components/Auth/Logout/Logout';
+import { Profile } from './components/Auth/Profile/Profile';
+import { Home } from './components/Main/Home/Home';
 import { NotFound } from './components/Main/NotFound/NotFound';
 import { Objects } from './components/Main/Objects/Objects';
 import { About } from './components/Main/About/About';
 import { Create } from './components/Main/Create/Create';
 import { Edit } from './components/Main/Edit/Edit';
 import { Details } from './components/Main/Details/Details';
-import { Profile } from './components/Auth/Profile/Profile';
 
 function App() {
     return (

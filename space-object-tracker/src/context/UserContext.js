@@ -13,6 +13,7 @@ export const UserProvider = ({ children }) => {
     const userLogout = () => {
         setUser({});
     }
+
     return (
         <UserContext.Provider value={{ user, userLogin, userLogout, isAuthenticated: !!user.accessToken }}>
             {children}

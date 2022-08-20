@@ -6,7 +6,6 @@ export const ObjectItem = ({ object }) => {
         <div className="objectItem">
             <div className="sections">
                 {/* <img src={object.imageUrl} alt="Space Object" /> */}
-                {/* <label htmlFor="title">Object:</label>??????????? */}
                 <h2><i className="fa-solid fa-globe"></i> {object.title}</h2>
                 <h3><i className="fa-solid fa-satellite"></i> {object.type}</h3>
                 <h3><i className="fa-solid fa-gauge-high"></i> {object.speed} km/h</h3>

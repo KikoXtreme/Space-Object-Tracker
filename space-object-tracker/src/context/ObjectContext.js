@@ -44,7 +44,6 @@ export const ObjectProvider = ({ children }) => {
                 { ...object, comments }
             ]
         })
-        // state.map(x => x._id === action.gameId ? { ...x, comments: [...x.comments, action.payload] } : x)
     }
 
     useEffect(() => {

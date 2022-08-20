@@ -33,7 +33,7 @@ export const Header = () => {
                         <li><Link to="/about">About</Link> </li>
                         <li><Link to="/objects">Objects</Link></li>
                         <li><Link to="/objects/create">New Discovery</Link></li>
-                        <li><Link to="/objects/search">Search for an Object</Link></li>
+                        {/* <li><Link to="/objects/search">Search for an Object</Link></li> */}
                         {/* <li><Link to="/objects/latest">Latest Discoveries</Link></li> */}
                         {/* <li><p className="notification">ERROR MESSAGE??</p></li> */}
                     </ul>
