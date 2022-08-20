@@ -32,6 +32,13 @@
     padding: 0.35em;
 }
 
+.new-object-title label {
+    float: left;
+    width: 120px;
+    padding-left: 30px;
+    padding-right: 10px;
+}
+
 .new-object-content textarea {
     width: 90%;
     margin: 0;

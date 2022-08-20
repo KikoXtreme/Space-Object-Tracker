@@ -30,7 +30,7 @@ export const Create = () => {
                         type="text"
                         id="title"
                         name="title"
-                        placeholder="Alpha 1 Satelite..."
+                        placeholder="Alpha 1 neo..."
                         required minLength="3"
                     />
                 </div>

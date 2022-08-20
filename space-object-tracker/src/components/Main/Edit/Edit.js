@@ -34,11 +34,9 @@ export const Edit = () => {
         <div id="edit-page" className="edit-object-border">
             <form id="edit" onSubmit={onSubmit}>
                 <div className="container">
-                <div className="header-background">
-                <span>Edit Object's Information</span>
-            </div>
-                    {/* <h1>Edit Object's Information</h1> */}
-
+                    <div className="header-background">
+                        <span>Edit Object's Information</span>
+                    </div>
                     <div className="edit-object-title">
                         <label htmlFor="title">Objects's Name: </label>
                         <input

@@ -7,7 +7,7 @@ export const About = () => {
             <div className="imgContainer">
                 <img src="/assets/space-junk.jpg" alt="Exo Planets Logo" />
             </div>
-
+            
             <section className="about-content">
                 <div className="planet-discovery-logo"><Link to="/"><span>Space Object Tracker</span></Link></div>
                 <p>'s primary goals, as described in the NASA Science Plan, are to discover and track all known and unknown objects
