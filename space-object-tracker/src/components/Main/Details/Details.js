@@ -32,7 +32,7 @@ export const Details = () => {
             .then(result => {
                 addComment(objectId, comment)
             })
-            console.log(currentObject.comments)
+        console.log(currentObject.comments)
     }
 
     const deleteObjectHandler = () => {
@@ -69,18 +69,18 @@ export const Details = () => {
                     {/* <img className="object-img" src={currentObject.imageUrl} alt="Space Object" /> */}
                     <h1><i className="fa-solid fa-magnifying-glass"></i> {currentObject.title}</h1>
                     <div className="empty"></div>
-                    <h3><i className="fa-solid fa-satellite"></i> {currentObject.type}</h3>
-                    <h3><i className="fa-solid fa-gauge-high"></i> {currentObject.speed} km/h</h3>
+                    <h3>Type: <i className="fa-solid fa-satellite"></i> {currentObject.type}</h3>
+                    <h3>Speed: <i className="fa-solid fa-gauge-high"></i> {currentObject.speed} km/h</h3>
                     <div className="empty"></div>
-                    <h3><i className="fa-solid fa-align-right"></i> {currentObject.description}</h3>
+                    <h3>Info: <i className="fa-solid fa-align-right"></i> {currentObject.description}</h3>
                     <div className="empty"></div>
-                {isOwner
-                    ? <div className="buttons">
-                        <Link to={`/objects/${objectId}/edit`} className="button">Edit</Link>
-                        <button onClick={deleteObjectHandler} className="button">Delete</button>
-                    </div>
-                    : null
-                }
+                    {isOwner
+                        ? <div className="buttons">
+                            <Link to={`/objects/${objectId}/edit`} className="button">Edit</Link>
+                            <button onClick={deleteObjectHandler} className="button">Delete</button>
+                        </div>
+                        : null
+                    }
                 </div>
 
 
@@ -88,7 +88,7 @@ export const Details = () => {
                     <h3>Comments <i className="fa-solid fa-comment-dots"></i></h3>
                     <div className="empty"></div>
                     <ul>
-                        {currentObject.comments?.map(x => <li key={x.text} className="comment"><p>{x}</p></li>)}
+                        {currentObject.comments?.map(x => <li key={x} className="comment"><p>{x}</p></li>)}
                     </ul>
                     {!currentObject.comments && <p className="no-comment">No comments.</p>}
                 </div>

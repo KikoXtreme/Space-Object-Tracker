@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../../context/UserContext";
 import './objects.css'
 
 export const ObjectItem = ({ object }) => {
+    const { user } = useContext(UserContext);
+
     return (
         <div className="objectItem">
             <div className="sections">
@@ -13,8 +17,13 @@ export const ObjectItem = ({ object }) => {
                 <div className="empty"></div>
             </div>
             <div className="sections">
-                <Link to={`/objects/${object._id}`} className="details-button">Details</Link>
-                <Link to={`/objects/${object._id}/edit`} className="details-button">Edit</Link>
+                {user.accessToken
+                    ? <>
+                        <Link to={`/objects/${object._id}`} className="details-button">Details</Link>
+                        <Link to={`/objects/${object._id}/edit`} className="details-button">Edit</Link>
+                    </>
+                    : null
+                }
             </div>
         </div >
     );
