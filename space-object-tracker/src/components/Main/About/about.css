@@ -48,7 +48,7 @@ section.about-content .planet-discovery-logo a {
 }
 
 .about-content a {
-    color: rgba(248, 228, 7, 0.9);
+    color: darkgoldenrod;
     text-decoration: underline;
     font-weight: bold;
 }

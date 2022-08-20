@@ -22,22 +22,22 @@ export const Profile = () => {
                 <p>{user.country}</p>
             </div>
 
-            <button className="edit-button">Edit</button>
+            {/* <button className="edit-button">Edit</button> */}
 
             {/* <form >
                 <div className="flex">
                     <p>Username: </p>
-                    <input type="text" name="username" required minlength="5" id="username" value="Kiril" />
+                    <input type="text" name="username" required minlength="5" id="username" defaultValue={user.username} />
                 </div>
                 <div className="flex">
                     <p>Email: </p>
                     <input type="email"
-                        name="email" id="email" required emailValidator value="kiril.valkov@gmail.com" />
+                        name="email" id="email" required emailValidator defaultValue={user.email} />
                 </div>
                 <div className="flex">
                     <p>Country: </p>
                     <div>
-                        <input ngModel type="text" name="country" id="country" value="Bulgaria" />
+                        <input ngModel type="text" name="country" id="country" defaultValue={user.country} />
                     </div>
                 </div>
                 <button type="button" className="red-button" > Cancel</button >

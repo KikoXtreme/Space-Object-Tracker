@@ -31,10 +31,10 @@ function App() {
                             <Route path='/users/login' element={<Login />}></Route>
                             <Route path='/users/register' element={<Register />}></Route>
                             <Route path='/users/logout' element={<Logout />}></Route>
-                            <Route path='/users/profile' element={<Profile />}></Route>
                             <Route path='/objects' element={<Objects />}></Route>
 
                             <Route element={<PrivateRoute />}>
+                                <Route path='/users/profile' element={<Profile />}></Route>
                                 <Route path='/objects/create' element={<Create />}></Route>
                                 <Route path='/objects/:objectId/edit' element={<Edit />}></Route>
                                 <Route path='/objects/:objectId' element={<Details />}></Route>
