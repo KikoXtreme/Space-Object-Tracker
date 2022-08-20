@@ -20,9 +20,9 @@ export const Details = () => {
             const details = await getOne(objectId);
             const comments = await getCommentByObjectId(objectId);
 
-            detailsObject(objectId, { ...details, comments: comments.map(x => `${x.user.email}: ${x.comment}`) })
+            detailsObject(objectId, { ...details, comments: comments.map(x => `${x.user.username}: ${x.comment}`) })
         })();
-    }, [objectId]);
+    }, [objectId, detailsObject]);
 
     const addCommentHandler = (e) => {
         e.preventDefault();
@@ -32,6 +32,7 @@ export const Details = () => {
             .then(result => {
                 addComment(objectId, comment)
             })
+            console.log(currentObject.comments)
     }
 
     const deleteObjectHandler = () => {
@@ -85,6 +86,7 @@ export const Details = () => {
 
                 <div className="details-comments">
                     <h3>Comments <i className="fa-solid fa-comment-dots"></i></h3>
+                    <div className="empty"></div>
                     <ul>
                         {currentObject.comments?.map(x => <li key={x.text} className="comment"><p>{x}</p></li>)}
                     </ul>

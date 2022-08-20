@@ -58,7 +58,7 @@ a+a {
     border-radius: 1.5em;
     border: .1em solid rgb(255, 255, 255);
     text-align: center;
-    margin: 8px auto 8px auto;
+    margin: 20px auto 20px auto;
     width: 800px;
 }
 
@@ -68,4 +68,16 @@ a+a {
     font-weight: bold;
     text-decoration: underline dotted aqua;
     color: aqua;
+}
+
+#objects-page h1{
+    color: whitesmoke;
+    font-size: 32px;
+}
+
+.no-objects{
+    color: whitesmoke;
+    font-size: 32px;
+    margin: 140px auto;
+    text-decoration: underline;
 }

@@ -16,7 +16,7 @@ export const Header = () => {
                 <div className="mini-navbar">
                     {user.accessToken
                         ? <ul>
-                            <li> <Link to="/users/profile">{user.email}'s Profile</Link></li>
+                            <li> <Link to="/users/profile">{user.username}'s Profile</Link></li>
                             <li> <Link to="/users/logout">Logout</Link></li>
                         </ul>
                         : <ul>

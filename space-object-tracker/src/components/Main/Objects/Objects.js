@@ -27,7 +27,7 @@ export const Objects = () => {
             <h1>All Objects</h1>
             {objects.length > 0
                 ? objects.map(x => <ObjectItem key={x._id} object={x} />)
-                : <h2 className="no-objects">No objects found yet</h2>
+                : <h2 className="no-objects">No objects found yet!</h2>
             }
         </section>
     );
