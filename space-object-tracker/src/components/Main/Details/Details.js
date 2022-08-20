@@ -82,8 +82,6 @@ export const Details = () => {
                         : null
                     }
                 </div>
-
-
                 <div className="details-comments">
                     <h3>Comments <i className="fa-solid fa-comment-dots"></i></h3>
                     <div className="empty"></div>
