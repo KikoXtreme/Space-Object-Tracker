@@ -78,9 +78,6 @@ export const Edit = () => {
                             defaultValue={currentObject.description}
                         />
                     </div>
-                    {/* <label htmlFor="game-img">Image:</label>
-                    <input type="text" id="imageUrl" name="imageUrl" defaultValue={currentObject.imageUrl} /> */}
-
                     <input className="btn submit" type="submit" value="Edit Object" />
                 </div>
             </form>

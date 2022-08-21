@@ -44,7 +44,7 @@ export const Details = () => {
                 })
         }
     }
-
+    
     // const validateUsername = (e) => {
     //     const username = e.target.value;
     //     let errorMsg = '';
@@ -91,7 +91,6 @@ export const Details = () => {
                     {!currentObject.comments && <p className="no-comment">No comments.</p>}
                 </div>
             </div>
-
             <div className="create-comment">
                 <h3>Add Comment <i className="fa-solid fa-comments"></i></h3>
                 <form className="form" onSubmit={addCommentHandler}>
